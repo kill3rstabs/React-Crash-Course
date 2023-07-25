@@ -7,7 +7,7 @@ import { About } from "./Components/About";
 import React, { useState, useEffect } from 'react';
 import {
   BrowserRouter as Router,
-  Switch,
+  Routes,
   Route
 } from "react-router-dom";
 
@@ -61,17 +61,15 @@ function App() {
     <>
       <Router>
         <Header title="My Todos List" searchBar={false} />
-        <Switch>
-          <Route exact path="/about">
-            <About />
-          </Route>
-          <Route exact path="/">
+        <Routes>
+          <Route path="/about" element={<About />} />
+          <Route path="/" element={
             <>
               <AddTodo addTodo={addTodo} />
               <Todos todos={todos} onDelete={onDelete} />
             </>
-          </Route>
-        </Switch>
+          } />
+        </Routes>
         <Footer />
       </Router>
     </>
